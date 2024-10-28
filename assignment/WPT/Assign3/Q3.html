@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #contain{
+
+        position:absolute;
+        left:50%;
+        top:30%;
+       
+      }
+      #values{
+        font-size: 1.5rem;
+        padding:0.5rem;
+      }
+   #submit{
+    font-size: 1.5rem;
+        padding:0.5rem;
+        background-color: REd;
+        color:white;
+   }
+    </style>
+</head>
+<body>
+    <div id="contain">
+    <select id="values">
+        <option id="one">Value 1</option>
+        <option id="two">Value 2</option>
+        <option id="three">Value 3</option>
+    </select>
+    <button type="submit" id="submit" onclick="removeValue()">Remove</button>
+</div>
+   <script>
+       function removeValue(){
+           const x=document.getElementById("values");
+           x.remove(x.Index);
+
+       } 
+    </script>
+</body>
+</html>

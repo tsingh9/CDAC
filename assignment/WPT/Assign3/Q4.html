@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        strong{
+            color:black;
+        }
+        #hover{
+            width:fit-content;
+        }
+    </style>
+</head>
+<body>
+    <p id="hover" onmouseover="hoverOver()">[Hover here to highlight bold words of following text]</p>
+    <p><strong>We</strong> have just started <strong>this</strong> section for the users who <strong>want</strong> work with <strong>various</strong> Javascript <strong>problems</strong> and write scripts online to test their JavaScript <strong>skill</strong>.</p>
+
+<script>
+    function hoverOver(){
+        event.preventDefault();
+        var x=document.querySelectorAll("strong");
+        for (let i = 0; i < x.length; i++) {
+           x[i].style.color="red";
+}
+        
+    }
+</script>
+</body>
+</html>

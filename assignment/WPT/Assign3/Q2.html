@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fo { position:absolute;
+            top:20%;
+            left:40%;
+           
+            border:2px solid black;
+          width:fit-content;
+            padding:2rem;
+            box-shadow: black 12px 13px 5px;
+            display:flex;
+        }
+        .left{
+           font-size: 1.5rem;
+           color:rgb(79, 79, 220);
+        display:inline-block;
+            width:30%;
+
+        }
+        .right{
+           
+           position:relative;
+           left:1rem;
+           font-size:1.2rem;
+        }
+        #dis{
+            width:max-content;
+            position:absolute;
+            top:20%;
+            left:45%;
+            display:none;
+            padding:2rem;
+            border:2px solid red;
+            box-shadow: pink 12px 13px 5px;
+        }
+       #submit{
+             background-color: rgb(76, 76, 222);
+             padding:0.8rem;
+             color:white;
+             border-radius:1.5rem;
+             margin:auto;
+             
+
+       }
+    </style>
+</head>
+<body>
+    <div id="fo">
+    <form>
+       <p><span class="left">First Name: </span><input type="text" class="right" id="FirstName"></p>
+       <p><span class="left">Last Name: </span><input type="text" class="right" id="LastName"></p> 
+       <p><span class="left">Contact Number: </span><input type="text" class="right" id="contact"></p> 
+       <p><span class="left">Email Id: </span><input type="email" class="right" id="email"></p>
+       <button type="submit" id="submit">Submit</button></button> 
+
+    </form>
+</div>
+    <div id="dis">
+          <h2>Submitted Details</h2>
+        <p>First Name: <span id="Fn"></span></p>
+        <p>Last Name: <span id="Ln"></span></p>
+        <p>Contact Number: <span id="cont"></span></p>
+        <p>Email: <span id="eid"></span></p>
+    </div>
+
+
+<script>
+    document.getElementById("fo").addEventListener("submit",displayDetails);
+
+     function displayDetails(){
+           event.preventDefault();
+            document.getElementById("fo").style.display='none';
+            document.getElementById("dis").style.display='block';
+           document.getElementById("Fn").innerHTML=document.getElementById("FirstName").value;
+           document.getElementById("Ln").innerHTML=document.getElementById("LastName").value;
+           document.getElementById("cont").innerHTML=document.getElementById("contact").value;
+           document.getElementById("eid").innerHTML=document.getElementById("email").value;
+        }
+</script>
+</body>
+</html>
