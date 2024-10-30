@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function fetchFast(){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve("Fast Done")
+            },2000)
+        })
+    }
+
+    function fetchSlow(){
+ return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+                resolve("Slow Done")
+            },6000)
+        })
+ 
+    }
+
+    console.log("Program Starting...")
+    const first=new Date();
+   
+
+    async function print(){
+        // const x=await fetchFast();
+        // console.log(x);
+        // const y=await fetchSlow();  // takes more time
+        // console.log(y);
+        // console.log(new Date()-first)
+    
+    const x=fetchFast();
+    const y=fetchSlow();
+    const z=await Promise.all([x,y]);  // faster than above commented method
+    console.log(z)
+    console.log(new Date()-first);
+    }
+
+    print();
+   
+</script>
+</html>

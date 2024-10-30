@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function fetchUser(){
+  return new Promise((resolve,reject)=>
+{
+setTimeout(() => {
+    const x={data:{user:"Monkey",admin:true}}
+    resolve(x)
+}, 3000);
+})
+    }
+
+function login(obj){
+if (obj.data.admin===true){
+    console.log("Success")
+}
+else{
+    console.log("fail")
+}
+}
+
+async function useAdmin(){
+      const user=await fetchUser();
+      login(user)
+}
+useAdmin();
+
+</script>
+</html>
