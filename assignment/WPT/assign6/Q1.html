@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-cards flex-wrap">
+        <div class="card-btn">
+          
+                <p>Price </p>
+                <span id="p1" class="price">200</span>
+                <select id="q1" class="quant">
+                    <option selected>1</option>
+                    <option >2</option>
+                </select>
+                <button class="btn" id="1" type="submit" onclick="add(this)">Add to cart</button>
+          
+            </div>
+        <div class="card-btn">
+           
+            <p>Price </p>
+            <span id="p2" class="price">400</span>
+            <select id="q2" class="quant">
+                <option selected>1</option>
+                <option >2</option>
+            </select>
+                <button class="btn" id="2" type="submit" onclick="add(this)">Add to cart</button>
+            
+        </div>
+        <div class="card-btn" >
+            
+            <p>Price </p>
+            <span id="p3" class="price">500</span>
+            <select id="q3" class="quant">
+                <option selected>1</option>
+                <option >2</option>
+            </select>
+                <button class="btn" id="3" type="submit" onclick="add(this)">Add to cart</button>
+                
+            
+        </div>
+    
+    </div>
+<div   class="cart">
+
+</div>
+    <script>
+let cart=[];
+const tax=2.5;
+var total=0;
+
+
+  var add=(itembtn)=>{
+   
+    const item=itembtn.closest(".card-btn");
+    
+    const price=item.querySelector(".price").innerHTML;
+    const quantityELement=item.querySelector(".quant");
+    const quantity=quantityELement.options[quantityELement.selectedIndex].value;
+     const t=parseInt(price*quantity);
+     total+=(t*tax);
+    
+  }
+  console.log(total);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="handlePromise()">
+    <form >
+        <h3>Expense</h3>
+        <div id="expense">
+        <label>Description</label>
+        <input type="text"  id="describe">
+        <label>Amount</label>
+        <input type="number" id="amount">
+        <label>Date</label>
+        <input type="date" id="date">
+        <button type="submit" id="btn" onclick="add()">Add</button>
+    </div>
+    </form>
+    <div id="expenseList"></div>
+    
+    <script>
+      
+     
+     var total=0;
+
+     //Q2
+     function add(){
+        
+        const des=document.getElementById("describe").value;
+        const amount=document.getElementById("amount").value;
+        const date=document.getElementById("date").value;
+        
+        var expenses;
+     if(localStorage.getItem("expenses")==null){
+        expenses=[];
+     }
+     else
+     {
+        expenses=JSON.parse(localStorage.getItem("expenses"));
+     }
+     
+     expenses.push({
+        "description":des,
+        "amount":amount,
+        "date":date
+     })
+     
+   localStorage.setItem("expenses",JSON.stringify(expenses));
+    
+    
+     }
+   //Q4
+     function display(){
+        event.preventDefault();
+        var expenses;
+        if(localStorage.getItem("expenses")==null){
+            expenses=[];
+        }
+        else
+     {
+        expenses=JSON.parse(localStorage.getItem("expenses"));
+     }
+        const newElementData=JSON.parse(localStorage.getItem("expenses"));
+         newElementData.forEach((e,i)=>{
+        const {description,amount,date}=e;
+        const adElement=document.createElement("div");
+        const parent=document.getElementById("expenseList");
+        adElement.innerHTML=`
+
+        <span>${description}</span> 
+        <span>${amount}</span>
+        <span>${date}</span>
+
+        `
+       
+parent.appendChild(adElement);
+
+      })
+
+
+     }
+//Q5-1
+     function expenseDescribe(){
+       const newElementData=JSON.parse(localStorage.getItem("expenses"));
+         newElementData.map((e)=>{
+            console.log(e.description);
+         })
+     }
+    //Q5-2 
+     function showExpense(){
+        const newElementData=JSON.parse(localStorage.getItem("expenses"));
+        const newData=newElementData.filter((e)=>e.amount>20);
+        newData.forEach((e,i)=>{
+        const adElement=document.createElement("div");
+        const parent=document.getElementById("expenseList");
+        adElement.innerHTML=`
+
+        <span>${e.description}</span> 
+        <span>${e.amount}</span>
+        <span>${e.date}</span>
+
+        `
+        
+parent.appendChild(adElement);
+     })}
+// showExpense();
+
+//Q5-3
+   //   totalExpense();
+   const totalExpense=()=>{ 
+     
+   
+     const newElementData=JSON.parse(localStorage.getItem("expenses"))??[];
+ 
+     total= newElementData.reduce((a,i)=>{
+       
+      a=a+Number(i.amount);
+        return a;
+      },0)
+        
+      console.log(total);
+      }
+
+      //Q7
+     function displayMsg(){
+            console.log("success");
+
+     }
+
+     function success(ad,callback){
+    ad()
+   callback();
+
+     }
+
+   //   success(add,displayMsg);
+
+   //Q10
+     async function handlePromise(){
+      try{
+         const a=await showExpense();
+
+      }
+catch(error){
+   console.log(error);
+}}
+     //Q9
+     function stateTotal(){
+         
+     }
+    </script>
+</body>
+</html>
